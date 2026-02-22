@@ -5,268 +5,313 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LearnFlow – The Future of Learning</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-dark: #4338ca;
-      --accent: #14b8a6;
+      --primary: #3b82f6;           /* Clean blue */
+      --accent: #06b6d4;             /* Teal glow */
+      --accent-glow: rgba(6, 182, 212, 0.3);
       --bg: #0f172a;
       --surface: #1e293b;
-      --text: #f1f5f9;
+      --text: #e2e8f0;
       --text-light: #94a3b8;
-      --gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+      --gradient: linear-gradient(135deg, #1e40af, #0ea5e9);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
     }
 
-    h1, h2, h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('https://www.transparenttextures.com/patterns/grid-me.png');
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-    /* Hero */
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+    /* Hero – Redesigned (clean, modern, no purple) */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: var(--gradient);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      background: radial-gradient(circle at 80% 20%, rgba(6,182,212,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
       text-align: center;
+      padding: 60px 20px;
     }
 
-    .hero h1 {
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      background: linear-gradient(to right, white, #e0e7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .logo {
+      font-family: 'Roboto Mono', monospace;
+      font-size: clamp(5rem, 12vw, 11rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: white;
+      text-shadow: 0 0 40px rgba(6,182,212,0.4);
       margin-bottom: 1.5rem;
       animation: fadeInUp 1.2s ease-out;
     }
 
-    .hero p {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      color: #e0e7ff;
+    .tagline {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1.5rem;
       animation: fadeInUp 1.4s ease-out;
     }
 
-    .cta-btn {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-      background: white;
-      color: var(--primary);
-      border-radius: 999px;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    .subtitle {
+      font-size: 1.4rem;
+      color: #cbd5e1;
+      max-width: 780px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
       animation: fadeInUp 1.6s ease-out;
     }
 
-    .cta-btn:hover {
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stat {
+      background: rgba(30,41,59,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(6,182,212,0.2);
+      border-radius: 16px;
+      padding: 1.2rem 2.2rem;
+      min-width: 170px;
+      transition: all 0.4s;
+    }
+
+    .stat:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(6,182,212,0.2);
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1.1rem 2.8rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.4s;
+    }
+
+    .cta-btn.primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 10px 30px rgba(59,130,246,0.4);
+    }
+
+    .cta-btn.primary:hover {
       transform: translateY(-6px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(79,70,229,0.4);
+      box-shadow: 0 20px 50px rgba(6,182,212,0.5);
     }
 
-    /* Features */
-    .features {
-      padding: 120px 0;
-      background: var(--surface);
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--accent);
+      border: 2px solid var(--accent);
     }
 
+    .cta-btn.secondary:hover {
+      background: rgba(6,182,212,0.12);
+      transform: translateY(-4px);
+    }
+
+    /* Other sections */
+    .section { padding: 120px 0; }
     .section-title {
       text-align: center;
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 4rem;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.5rem;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2.5rem; }
 
-    .feature-card {
+    .card {
       background: rgba(30,41,59,0.6);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 24px;
       padding: 2.5rem;
-      transition: all 0.5s ease;
+      transition: all 0.5s;
       opacity: 0;
       transform: translateY(40px);
     }
 
-    .feature-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .card.visible { opacity: 1; transform: translateY(0); }
+
+    .card:hover { transform: translateY(-12px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(6,182,212,0.2); }
+
+    .ui-mock {
+      background: #0f172a;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.95rem;
+      color: #a5b4fc;
+      border: 1px solid #334155;
+      white-space: pre-wrap;
     }
 
-    .feature-card:hover {
-      transform: translateY(-16px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(20,184,166,0.15);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-    }
-
-    .feature-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Flow Examples */
-    .flow-section {
-      padding: 100px 0;
-      background: linear-gradient(to bottom, var(--bg), #0f172a);
-    }
-
-    .flow-card {
-      background: rgba(30,41,59,0.5);
-      border: 1px solid rgba(79,70,229,0.3);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin: 2rem 0;
-      backdrop-filter: blur(8px);
-    }
-
-    /* Footer */
     footer {
       padding: 80px 0 40px;
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    footer p {
-      color: var(--text-light);
-      margin-top: 1.5rem;
-    }
+    footer p { color: var(--text-light); margin-top: 1.5rem; }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 1s ease-out;
-    }
-
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in { opacity: 0; animation: fadeInUp 1.2s forwards; }
+    .fade-in-delay { animation-delay: 0.6s; }
+    .fade-in-delay-2 { animation-delay: 1.2s; }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
+  <!-- Hero – Clean & Modern -->
   <section class="hero">
+    <div class="hero-bg"></div>
+
     <div class="container hero-content">
-      <h1>LearnFlow</h1>
-      <p>The smartest way to learn anything — from school to UPSC — in India</p>
-      <a href="#features" class="cta-btn">Discover the Magic →</a>
+      <h1 class="logo fade-in">LearnFlow</h1>
+
+      <p class="tagline fade-in-delay">
+        The Smart Way to Learn
+      </p>
+
+      <p class="subtitle fade-in-delay">
+        Personalized lessons, real progress tracking, and parent visibility.<br>
+        From Class 1 to UPSC — built for every Indian student.
+      </p>
+
+     
+
+      <div class="cta-group fade-in-delay">
+        <a href="#screens" class="cta-btn primary">
+          <span>Explore the App</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#features" class="cta-btn secondary">
+          <span>Why Choose LearnFlow</span>
+          <i class="fas fa-info-circle"></i>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="features" id="features">
+  <section class="section features" id="features">
     <div class="container">
-      <h2 class="section-title">Why LearnFlow Wins</h2>
+      <h2 class="section-title">Why LearnFlow Stands Out</h2>
 
-      <div class="feature-grid">
-        <div class="feature-card scroll-reveal">
-          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+      <div class="grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-brain"></i></div>
           <h3>Content-First Freedom</h3>
-          <p>No rigid classes. Jump to any topic, mindmap, video, or quiz — learn your way.</p>
+          <p>Learn your way — structured or free exploration. No forced classes.</p>
         </div>
 
-        <div class="feature-card scroll-reveal" style="transition-delay: 0.2s;">
-          <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-          <h3>Admin Magic</h3>
-          <p>Bulk Excel upload + instant updates. Schools add syllabus in minutes — no app update needed.</p>
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Admin Superpowers</h3>
+          <p>Bulk Excel upload + instant updates. Schools add syllabus in minutes.</p>
         </div>
 
-        <div class="feature-card scroll-reveal" style="transition-delay: 0.4s;">
-          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Real Mastery Tracking</h3>
-          <p>Resume exactly where you left off. See % complete, streak 🔥, and weak spots — everywhere.</p>
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Real Mastery & Streak</h3>
+          <p>Resume where you left off. See % complete, streak 🔥, weak spots — everywhere.</p>
         </div>
 
-        <div class="feature-card scroll-reveal" style="transition-delay: 0.6s;">
-          <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
           <h3>Parent Power</h3>
-          <p>Weekly reports, time spent, quiz scores, weak areas — all shareable. Parents become partners.</p>
+          <p>Weekly reports, time spent, quiz scores, weak areas — all shareable.</p>
         </div>
 
-        <div class="feature-card scroll-reveal" style="transition-delay: 0.8s;">
-          <div class="feature-icon"><i class="fas fa-search"></i></div>
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-search"></i></div>
           <h3>Smart & Dynamic</h3>
-          <p>Home, Library, onboarding — everything admin-controlled & personalized. Add UPSC tomorrow — done.</p>
+          <p>Home, Library, onboarding — everything admin-controlled & personalized.</p>
         </div>
 
-        <div class="feature-card scroll-reveal" style="transition-delay: 1s;">
-          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+        <div class="card fade-in">
+          <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
           <h3>Offline-Ready Future</h3>
-          <p>Resume progress offline. Downloads coming soon — perfect for low-data India.</p>
+          <p>Resume progress offline. Downloads coming soon — perfect for India.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Flow Examples -->
-  <section class="flow-section">
+  <!-- App Screens -->
+  <section class="section flow-section" id="screens">
     <div class="container">
-      <h2 class="section-title">How It Feels to Use LearnFlow</h2>
+      <h2 class="section-title">See LearnFlow in Action</h2>
 
-      <div class="flow-card scroll-reveal">
-        <h3>1. Onboarding – 90 seconds</h3>
-        <p>Pick your Board • Medium • Class/Exam • Goal → instant personalized world</p>
-        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
+      <!-- Onboarding -->
+      <div class="card fade-in">
+        <h3>1. Onboarding – 90 Seconds</h3>
+        <p>Personalized in a flash</p>
+        <div class="ui-mock">
 Welcome, Harsh!
 Board:     [ GSEB ▼ ] [ CBSE ▼ ] [ UPSC ▼ ]
 Medium:    [ Gujarati ▼ ] [ English ▼ ]
@@ -274,43 +319,109 @@ Standard:  [ Class 5 ▼ ] [ Prelims ▼ ]
 Goal:      [ School Exams ▼ ] [ JEE ▼ ]
 Name:      _______________
 Role:      ( ) Student   ( ) Parent
-        </pre>
+[ Get Started ]
+        </div>
       </div>
 
-      <div class="flow-card scroll-reveal">
+      <!-- Home -->
+      <div class="card fade-in">
         <h3>2. Home – Your Daily Launchpad</h3>
         <p>Personalized, motivating, always fresh</p>
-        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
+        <div class="ui-mock">
 Good Morning, Harsh! Day 7 streak 🔥
 Let's crush Class 5 today
 
-[Big Card] Today's Focus: Photosynthesis • 40% left • Continue
+[Hero] Today's Focus: Photosynthesis • 40% left • Continue
 [Horizontal] Continue Learning: Algebra PDF (65%) • Cell Video (30%)
 [Vertical] Boost Weak Topics: Algebra 62% • Reactions 58%
 [Grid] My Subjects: Maths • Science • Gujarati
 [Swipe] Daily Motivation: "You got this..." + quote image
 [Carousel] Announcements: New JEE mocks added!
-        </pre>
+        </div>
       </div>
 
-      <div class="flow-card scroll-reveal">
-        <h3>3. Chapter View – All Learning in One Screen</h3>
-        <p>6 powerful content types, one beautiful hub</p>
-        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
-Chapter 3: Photosynthesis (65% complete)
+      <!-- My Class -->
+      <div class="card fade-in">
+        <h3>3. My Class – Structured Learning Hub</h3>
+        <p>Beautiful chapter view with 6 content types</p>
+        <div class="ui-mock">
+My Class – Class 5 GSEB Gujarati
 
-• Mind Map (zoomable image)
+Subjects:
+→ Mathematics (78%) → tap
+Chapters:
+→ Chapter 1: Real Numbers (65%) → tap
+
+Chapter Detail:
+• Mind Map (zoom)
 • Notes PDF (resume page 8)
-• Video Lesson (3:45 left • 12 min)
-• Audio Explanation (background play)
-• Text Lesson (HTML formatted)
-• Quiz (10 MCQs • Test yourself)
-        </pre>
+• Video (3:45 left • 12 min)
+• Audio (background play)
+• Text/HTML
+• Quiz (Test yourself)
+        </div>
       </div>
 
-      <div class="flow-card scroll-reveal">
-        <h3>4. Parent Dashboard – Real Visibility</h3>
-        <p>Weekly report, time spent, quiz scores, weak areas – shareable PDF</p>
+      <!-- Library -->
+      <div class="card fade-in">
+        <h3>4. Library – Free Exploration</h3>
+        <p>Dynamic tabs + search + filters</p>
+        <div class="ui-mock">
+Library
+Tabs: For You • All • Popular • Recent • Career • Motivation
+Search: [ search bar ]
+
+[Card] "How to Crack UPSC" • Video • 12 min • thumbnail
+[Card] "Motivation Quote" • Image • Quick Read
+[Card] "Physics Notes" • PDF • 20 min
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="card fade-in">
+        <h3>5. Quiz – The Main Feature</h3>
+        <p>Dynamic MCQs, timer, beautiful results</p>
+        <div class="ui-mock">
+Quiz: Indian Polity – 10 questions • 15 min timer
+
+After submit:
+80% (8/10) – Amazing! 🎉
+Mastery updated to 80%
+Detailed review: wrong answers + explanations
+Weak topics: Practice these 3 quizzes
+        </div>
+      </div>
+
+      <!-- Parent Dashboard -->
+      <div class="card fade-in">
+        <h3>6. Parent Dashboard – Real Visibility</h3>
+        <p>Weekly report, time spent, quiz scores, weak areas</p>
+        <div class="ui-mock">
+Your Child: Harsh Patel – Class 5 GSEB
+Overall Mastery: 72% ↑12% this week
+This week: 2h 45m studied
+Recent Quizzes: Polity – 8/10 (80%) • Maths – 6/10
+Weak Areas: Algebra (62%) • Try these easy videos
+[Generate Weekly Report] → PDF share via WhatsApp
+        </div>
+      </div>
+
+      <!-- Profile / User Dashboard -->
+      <div class="card fade-in">
+        <h3>7. Profile / User Dashboard – Your Control Center</h3>
+        <p>Track progress, change theme, logout</p>
+        <div class="ui-mock">
+Harsh Patel
+[Profile Photo – circular]
+Class 5 GSEB Gujarati • School Exams
+Mastery: 72% (progress ring)
+Streak: 7 days 🔥
+Settings:
+- Change Theme (Light / Dark / System)
+- View Mastery Graph
+- Track Time Spent
+- Logout
+        </div>
       </div>
     </div>
   </section>
@@ -318,14 +429,14 @@ Chapter 3: Photosynthesis (65% complete)
   <!-- Footer -->
   <footer>
     <div class="container">
-      <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">Ready to Transform Learning?</h2>
-      <p style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 2rem;">
+      <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Ready to Transform Learning?</h2>
+      <p style="font-size: 1.4rem; color: #94a3b8; margin-bottom: 2.5rem;">
         Built with ❤️ in Ahmedabad for students across India
       </p>
-      <a href="mailto:your-email@example.com" class="cta-btn" style="font-size: 1.4rem; padding: 1.2rem 3rem;">
+      <a href="mailto:your-email@example.com" class="cta-btn" style="font-size: 1.5rem; padding: 1.2rem 3.5rem;">
         Get in Touch →
       </a>
-      <p style="margin-top: 3rem; color: var(--text-light);">
+      <p style="margin-top: 4rem; color: var(--text-light);">
         © 2026 LearnFlow | Made with passion & code
       </p>
     </div>
@@ -333,14 +444,14 @@ Chapter 3: Photosynthesis (65% complete)
 
   <script>
     // Scroll reveal animation
-    const reveals = document.querySelectorAll('.scroll-reveal');
+    const reveals = document.querySelectorAll('.card');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     reveals.forEach(el => observer.observe(el));
   </script>
