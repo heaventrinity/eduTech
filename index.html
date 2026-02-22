@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnFlow – The Future of Learning</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --accent: #14b8a6;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f1f5f9;
+      --text-light: #94a3b8;
+      --gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--gradient);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      background: linear-gradient(to right, white, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #e0e7ff;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      background: white;
+      color: var(--primary);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: fadeInUp 1.6s ease-out;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(79,70,229,0.4);
+    }
+
+    /* Features */
+    .features {
+      padding: 120px 0;
+      background: var(--surface);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 4rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .feature-card {
+      background: rgba(30,41,59,0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 2.5rem;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .feature-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-16px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(20,184,166,0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .feature-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Flow Examples */
+    .flow-section {
+      padding: 100px 0;
+      background: linear-gradient(to bottom, var(--bg), #0f172a);
+    }
+
+    .flow-card {
+      background: rgba(30,41,59,0.5);
+      border: 1px solid rgba(79,70,229,0.3);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 80px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p {
+      color: var(--text-light);
+      margin-top: 1.5rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease-out;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>LearnFlow</h1>
+      <p>The smartest way to learn anything — from school to UPSC — in India</p>
+      <a href="#features" class="cta-btn">Discover the Magic →</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Why LearnFlow Wins</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h3>Content-First Freedom</h3>
+          <p>No rigid classes. Jump to any topic, mindmap, video, or quiz — learn your way.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal" style="transition-delay: 0.2s;">
+          <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Admin Magic</h3>
+          <p>Bulk Excel upload + instant updates. Schools add syllabus in minutes — no app update needed.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal" style="transition-delay: 0.4s;">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Real Mastery Tracking</h3>
+          <p>Resume exactly where you left off. See % complete, streak 🔥, and weak spots — everywhere.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal" style="transition-delay: 0.6s;">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <h3>Parent Power</h3>
+          <p>Weekly reports, time spent, quiz scores, weak areas — all shareable. Parents become partners.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal" style="transition-delay: 0.8s;">
+          <div class="feature-icon"><i class="fas fa-search"></i></div>
+          <h3>Smart & Dynamic</h3>
+          <p>Home, Library, onboarding — everything admin-controlled & personalized. Add UPSC tomorrow — done.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal" style="transition-delay: 1s;">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Offline-Ready Future</h3>
+          <p>Resume progress offline. Downloads coming soon — perfect for low-data India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow Examples -->
+  <section class="flow-section">
+    <div class="container">
+      <h2 class="section-title">How It Feels to Use LearnFlow</h2>
+
+      <div class="flow-card scroll-reveal">
+        <h3>1. Onboarding – 90 seconds</h3>
+        <p>Pick your Board • Medium • Class/Exam • Goal → instant personalized world</p>
+        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
+Welcome, Harsh!
+Board:     [ GSEB ▼ ] [ CBSE ▼ ] [ UPSC ▼ ]
+Medium:    [ Gujarati ▼ ] [ English ▼ ]
+Standard:  [ Class 5 ▼ ] [ Prelims ▼ ]
+Goal:      [ School Exams ▼ ] [ JEE ▼ ]
+Name:      _______________
+Role:      ( ) Student   ( ) Parent
+        </pre>
+      </div>
+
+      <div class="flow-card scroll-reveal">
+        <h3>2. Home – Your Daily Launchpad</h3>
+        <p>Personalized, motivating, always fresh</p>
+        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
+Good Morning, Harsh! Day 7 streak 🔥
+Let's crush Class 5 today
+
+[Big Card] Today's Focus: Photosynthesis • 40% left • Continue
+[Horizontal] Continue Learning: Algebra PDF (65%) • Cell Video (30%)
+[Vertical] Boost Weak Topics: Algebra 62% • Reactions 58%
+[Grid] My Subjects: Maths • Science • Gujarati
+[Swipe] Daily Motivation: "You got this..." + quote image
+[Carousel] Announcements: New JEE mocks added!
+        </pre>
+      </div>
+
+      <div class="flow-card scroll-reveal">
+        <h3>3. Chapter View – All Learning in One Screen</h3>
+        <p>6 powerful content types, one beautiful hub</p>
+        <pre style="background:#1e293b; padding:1.5rem; border-radius:12px; margin-top:1rem;">
+Chapter 3: Photosynthesis (65% complete)
+
+• Mind Map (zoomable image)
+• Notes PDF (resume page 8)
+• Video Lesson (3:45 left • 12 min)
+• Audio Explanation (background play)
+• Text Lesson (HTML formatted)
+• Quiz (10 MCQs • Test yourself)
+        </pre>
+      </div>
+
+      <div class="flow-card scroll-reveal">
+        <h3>4. Parent Dashboard – Real Visibility</h3>
+        <p>Weekly report, time spent, quiz scores, weak areas – shareable PDF</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">Ready to Transform Learning?</h2>
+      <p style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 2rem;">
+        Built with ❤️ in Ahmedabad for students across India
+      </p>
+      <a href="mailto:your-email@example.com" class="cta-btn" style="font-size: 1.4rem; padding: 1.2rem 3rem;">
+        Get in Touch →
+      </a>
+      <p style="margin-top: 3rem; color: var(--text-light);">
+        © 2026 LearnFlow | Made with passion & code
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
